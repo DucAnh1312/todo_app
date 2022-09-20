@@ -1,22 +1,107 @@
-/* body {
+* {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+body {
+  background-color: #ffffff;
+  color: #23262f;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+.title {
+  width: 193px;
+  height: 36px;
+  margin-top: 19px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 28px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+}
+.form {
+  display: flex;
+  justify-content: center;
+}
+.input-box {
+  display: block;
+  margin-bottom: 13px;
+  width: 725px;
+  height: 44px;
+  background-color: #fcfcfd;
+  border-radius: 4px;
+  border: 1px solid #33333a34;
+  padding-left: 16px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+}
+.button-primary {
+  width: 221px;
+  height: 48px;
+  background-color: #f80000;
+  border-radius: 4px;
+  border: none;
+  color: #fcfcfd;
+  margin-left: 48px;
+  display: block;
+  margin-bottom: 8px;
 }
 
-button{
-  margin-left: 15px;
+.second-btn {
+  width: 46px;
+  height: 25px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  border: none;
+  background-color: #ffffff;
+  color: #777e91;
+  margin-right: 80px;
+  margin-top: 23px;
+  text-decoration: underline
+}
+.active {
+  color: #eb1c24;
+  font-size: 20px;
+}
+.change-screen {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 44px;
 }
 
-ul li:not(:first-child){
-  margin-top: 15px;
-} */
+th,
+td {
+  padding: 12px 15px;
+  text-align: center;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+.table {
+  border-collapse: collapse;
+  width: 96%;
+  border: 1px solid #ddd;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: #fcfcfd;
+}
+
+.icon-edit {
+  font-size: 30px;
+  margin-right: 5px;
+  margin-left: 5px;
+  background-color: #09b530;
+  border-radius: 50%;
+}
+.icon-delete {
+  font-size: 30px;
+  margin-right: 5px;
+  margin-left: 5px;
+  background-color: #f80000;
+  border-radius: 50%;
+}
