@@ -1,19 +1,21 @@
 import React, { useState } from "react";
-import userList from "./data.js";
 import UserTable from "./tables/UserTable";
+import DoneUserTable from "./tables/DoneUserTable.jsx";
+import SwitchTabBtn from "./forms/SwitchTabBtn.jsx";
 import AddUserForm from "./forms/AddUserForm";
 import EditUserForm from "./forms/EditUserForm";
+import "./index.css";
 
 const App = () => {
-  const [users, setUsers] = useState(userList);
-  const [complete, setComplete] = useState(false);
-  const [completeUsers, setCompleteUsers] = useState([]);
-
+  const [users, setUsers] = useState([]);
+  const [doneUsers, setDoneUsers] = useState([]);
+  const [doneTab, setDoneTab] = useState(false);
+  // add
   const addUser = (user) => {
-    user.id = users.length + 1;
+    user.id = user.id + 1;
     setUsers([...users, user]);
   };
-
+  // delete
   const deleteUser = (id) => {
     setUsers(users.filter((user) => user.id !== id));
   };
@@ -23,12 +25,12 @@ const App = () => {
   const initialUser = { id: null, name: "", username: "" };
 
   const [currentUser, setCurrentUser] = useState(initialUser);
-
+  // edit
   const editUser = (id, user) => {
     setEditing(true);
     setCurrentUser(user);
   };
-
+  // update
   const updateUser = (newUser) => {
     setUsers(
       users.map((user) => (user.id === currentUser.id ? newUser : user))
@@ -36,13 +38,25 @@ const App = () => {
     setCurrentUser(initialUser);
     setEditing(false);
   };
+  // done
+  const doneUser = (id, index) => {
+    setUsers(users.filter((user) => user.id !== id));
+    let takeItem = { ...users[index] };
+    let updateArray = [...doneUsers];
+    updateArray.push(takeItem);
+    setDoneUsers(updateArray);
+  };
+  // delete done
+  const deleteDoneUser = (id) => {
+    setDoneUsers(doneUsers.filter((user) => user.id !== id));
+  };
 
   return (
     <div className="container">
-      <div className="title">
+      <div className="tilte">
         <p>Todo App</p>
       </div>
-      <div className="row">
+      <div>
         <div className="five columns">
           {editing ? (
             <div>
@@ -58,31 +72,24 @@ const App = () => {
             </div>
           )}
         </div>
-
         <div className="change-screen">
-          <button
-            className={`second-btn ${complete === false && "active"}`}
-            onClick={() => setComplete(false)}
-          >
-            Todo
-          </button>
-          <button
-            className={`second-btn ${complete === true && "active"}`}
-            onClick={() => setComplete(true)}
-          >
-            Done
-          </button>
+          <SwitchTabBtn doneTab={doneTab} setDoneTab={setDoneTab} />
         </div>
-
-        <div>
-          <UserTable
-            users={users}
-            deleteUser={deleteUser}
-            editUser={editUser}
-            complete={complete}
-            completeUsers={completeUsers}
-            setCompleteUsers={setCompleteUsers}
-          />
+        <div className="seven columns">
+          {doneTab === false && (
+            <UserTable
+              users={users}
+              deleteUser={deleteUser}
+              editUser={editUser}
+              doneUser={doneUser}
+            />
+          )}
+          {doneTab === true && (
+            <DoneUserTable
+              doneUsers={doneUsers}
+              deleteDoneUser={deleteDoneUser}
+            />
+          )}
         </div>
       </div>
     </div>

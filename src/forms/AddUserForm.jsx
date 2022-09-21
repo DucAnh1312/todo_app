@@ -21,24 +21,24 @@ const AddUserForm = (props) => {
     <form className="form">
       <div>
         <input
+          placeholder="name"
           className="input-box"
           type="text"
           value={user.name}
           name="name"
           onChange={handleChange}
-          placeholder="Name"
         />
         <input
+          placeholder="Description..."
           className="input-box"
           type="text"
           value={user.username}
           name="username"
           onChange={handleChange}
-          placeholder="Description..."
         />
       </div>
       <button className="button-primary" type="submit" onClick={handleSubmit}>
-        Add user
+        Add New Item
       </button>
     </form>
   );
